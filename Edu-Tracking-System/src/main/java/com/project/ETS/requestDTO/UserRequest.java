@@ -10,9 +10,10 @@ import lombok.Setter;
 @Setter
 public class UserRequest {
 	
-	@NotNull(message = "user_name cannot be null")
+	@NotNull(message = "username cannot be null")
 	@Pattern(regexp = "^[a-zA-Z][a-zA-Z0-9_-]{2,19}$")
 	private String username;
+	
 	@NotNull(message = "email cannot be null")
 	@Email(regexp ="^[a-zA-Z0-9._%+-]+@gmail\\.com$" )
 	private String email;

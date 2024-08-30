@@ -1,7 +1,10 @@
 package com.project.ETS.service;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
+import com.project.ETS.enums.Stack;
 import com.project.ETS.enums.UserRole;
 import com.project.ETS.mapping.UserMapper;
 import com.project.ETS.model.Admin;
@@ -11,6 +14,10 @@ import com.project.ETS.model.Trainer;
 import com.project.ETS.model.User;
 import com.project.ETS.repo.UserRepository;
 import com.project.ETS.requestDTO.RegistrationRequestDTO;
+import com.project.ETS.requestDTO.StudentRequest;
+import com.project.ETS.requestDTO.TrainerRequest;
+import com.project.ETS.requestDTO.UserRequest;
+import com.project.ETS.responseDTO.StudentResponse;
 import com.project.ETS.responseDTO.UserResponse;
 
 import lombok.AllArgsConstructor;
@@ -45,6 +52,41 @@ public class UserService {
 		
 		
 	}
+	
+	public UserResponse updateUser(UserRequest userRequestDTO, String userId,UserRole role) {
+		Optional<User> optional = userRepo.findById(userId);
+		User user = optional.get();
+		
+		if(user!=null) {
+			
+		switch (role) {
+		
+		
+		
+		case TRAINER:{
+			Trainer trainer = (Trainer) user;
+			TrainerRequest trainerRequestDTO = (TrainerRequest)userRequestDTO;
+			trainer = userMapper.mapToTrainerEntity(trainerRequestDTO,trainer);
+			trainer = userRepo.save(trainer);
+			
+			return userMapper.mapToTrainerResponse(trainer);
+		}
+		
+		case STUDENT:{
+			Student student = (Student) user;
+			StudentRequest studentRequestDTO = (StudentRequest)userRequestDTO;
+			student = userMapper.mapToStudentEntity(studentRequestDTO, student);
+			student = userRepo.save(student);
+			
+			return userMapper.mapToStudentResponse(student);
+		}
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + role);
+		}
+	}
+		return null;
+	}
+	
 	
 	
 

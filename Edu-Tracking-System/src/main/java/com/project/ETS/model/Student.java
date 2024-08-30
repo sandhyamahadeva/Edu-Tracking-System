@@ -24,12 +24,12 @@ public class Student extends User{
 	private Year yop;
 	
 	@Column(name = "degree_percentage")
-	private int degreePercentage;
+	private double degreePercentage;
 	
 	@Column(name = "twelveth_percentage")
-	private int twelvethPercentage;
+	private double twelvethPercentage;
 	
 	@Column(name = "tenth_percentage")
-	private int tenthPercentage;
+	private double tenthPercentage;
 
 }
