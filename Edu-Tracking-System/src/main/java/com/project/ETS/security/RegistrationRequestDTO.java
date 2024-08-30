@@ -1,4 +1,4 @@
-package com.project.ETS.requestDTO;
+package com.project.ETS.security;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;

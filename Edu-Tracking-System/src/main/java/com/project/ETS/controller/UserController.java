@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.ETS.enums.Stack;
 import com.project.ETS.enums.UserRole;
-import com.project.ETS.requestDTO.RegistrationRequestDTO;
 import com.project.ETS.requestDTO.StudentRequest;
 import com.project.ETS.requestDTO.TrainerRequest;
 import com.project.ETS.responseDTO.StudentResponse;
 import com.project.ETS.responseDTO.TrainerResponse;
 import com.project.ETS.responseDTO.UserResponse;
+import com.project.ETS.security.RegistrationRequestDTO;
 import com.project.ETS.service.UserService;
 import com.project.ETS.utility.CustomResponseBuilder;
 import com.project.ETS.utility.ResponseStructure;
@@ -67,10 +67,11 @@ public class UserController {
 		StudentResponse studentResponse= (StudentResponse) userService.updateUser(studentRequest,userId,UserRole.STUDENT);
 		return responseBuilder.success(HttpStatus.OK, "Student Updated", studentResponse);
 	}
-//	@PatchMapping("/students/{userId}")
-//	public ResponseEntity<ResponseStructure<StudentResponse>> updateStudentStack(@RequestParam Stack stack,@PathVariable String userId){
-//		StudentResponse response=userService.updateStudent(stack, userId);
-//		return responseBuilder.success(HttpStatus.OK, "Student stack is Updated", response);
-//	}
+	
+	@PatchMapping("/students/{userId}")
+	public ResponseEntity<ResponseStructure<StudentResponse>> updateStudentStack(@RequestParam Stack stack,@PathVariable String userId){
+		StudentResponse response=userService.updateStudent(stack, userId);
+		return responseBuilder.success(HttpStatus.OK, "Student stack is Updated", response);
+	}
 
 }

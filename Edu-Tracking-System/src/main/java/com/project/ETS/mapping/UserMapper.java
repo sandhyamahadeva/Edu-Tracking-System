@@ -5,12 +5,12 @@ import org.springframework.stereotype.Component;
 import com.project.ETS.model.Student;
 import com.project.ETS.model.Trainer;
 import com.project.ETS.model.User;
-import com.project.ETS.requestDTO.RegistrationRequestDTO;
 import com.project.ETS.requestDTO.StudentRequest;
 import com.project.ETS.requestDTO.TrainerRequest;
 import com.project.ETS.responseDTO.StudentResponse;
 import com.project.ETS.responseDTO.TrainerResponse;
 import com.project.ETS.responseDTO.UserResponse;
+import com.project.ETS.security.RegistrationRequestDTO;
 
 @Component
 public class UserMapper {
