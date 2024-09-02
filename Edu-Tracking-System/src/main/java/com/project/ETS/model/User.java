@@ -2,54 +2,48 @@ package com.project.ETS.model;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import com.project.ETS.config.SequenceId;
 import com.project.ETS.enums.UserRole;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
-import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
 @Table(name = "users")
 @Getter
 @Setter
 @Inheritance(strategy = InheritanceType.JOINED)
+@EntityListeners(AuditingEntityListener.class)
 public class User {
 
 	@Id
+	@Column(name = "userid")
 	@SequenceId
-	@Column(name = "user_id")
 	private String userId;
-	
-	@Column(name = "user_name")
-	private String username;
-	
-	@Column(name = "user_email")
+
+	@Column(name = "username")
+	private String userName;
+
+	@Column(name = "email")
 	private String email;
-	
-	@Column(name = "user_password")
+
+	@Column(name = "password")
 	private String password;
-	
-	@Column(name = "user_role")
+
+	@Column(name = "role")
 	@Enumerated(EnumType.STRING)
 	private UserRole role;
-	
-	@Column(name = "created_at")
-	@CreatedDate
-	private LocalDateTime createdAt;
-	
-	@Column(name = "modified_at")
-	@LastModifiedDate
-	private LocalDateTime modifiedAt;
 
+	@CreatedDate
+	@Column(name = "createdDate")
+	private LocalDateTime createdDate;
+
+	@LastModifiedDate
+	@Column(name = "modifiedDate")
+	private LocalDateTime modifiedDate;
 }

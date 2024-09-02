@@ -14,33 +14,25 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.project.ETS.utility.CustomResponseBuilder;
-import com.project.ETS.utility.CustomeFieldError;
+import com.project.ETS.utility.AppResponseBuilder;
+import com.project.ETS.utility.CustomFieldError;
 
 @RestControllerAdvice
 public class FieldErrorExceptionHandler extends ResponseEntityExceptionHandler {
-	
-	private CustomResponseBuilder responseBuilder;
-	
-	public FieldErrorExceptionHandler(CustomResponseBuilder responseBuilder) {
-		super();
-		this.responseBuilder = responseBuilder;
-	}
 
+	private AppResponseBuilder responseBuilder;
 
-	
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
-			HttpHeaders headers, HttpStatusCode status, WebRequest request) {
-		List<ObjectError>objectErrors=ex.getAllErrors();
-		List<CustomeFieldError> errors=new ArrayList<>();
-		for(ObjectError error:objectErrors) {
-			FieldError fieldError=(FieldError)error;
-			errors.add(CustomeFieldError.create(fieldError.getField(), fieldError.getDefaultMessage()));
+																  HttpHeaders headers,HttpStatusCode status, WebRequest request){
+		List<ObjectError> objectErrors = ex.getAllErrors();
+		List<CustomFieldError> errors = new ArrayList<>();
+		for(ObjectError error : objectErrors) {
+			FieldError fieldEror = (FieldError) error;
+			errors.add(CustomFieldError.create(fieldEror.getField(), fieldEror.getDefaultMessage()));
 		}
-		return responseBuilder.fieldErrors(HttpStatus.BAD_REQUEST, "Bad requests,Invalid inputs", errors);
+		return responseBuilder.fieldErrors(HttpStatus.BAD_REQUEST,"Bad requests, Invalid inputs", errors);
 	}
-	
-	
+
 
 }

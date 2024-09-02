@@ -5,11 +5,9 @@ import jakarta.persistence.EntityListeners;
 import jakarta.persistence.Table;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-
 @Entity
-@Table(name = "hrs")
+@Table(name = "super_admins")
 @EntityListeners(AuditingEntityListener.class)
-public class HR extends User{
+public class Super_Admin extends User{
 
 }
-

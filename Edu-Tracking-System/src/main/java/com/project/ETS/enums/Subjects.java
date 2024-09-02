@@ -1,7 +1,0 @@
-package com.project.ETS.enums;
-
-public enum Subjects {
-
-	SQL,JAVA,MONGO_DB,
-	CSS,HTML,JAVA_SCRIPT,SPRING,HIBERNATE,REACT_JS,NODE_JS,JDBC,SERVELETS,PYTHON;
-}

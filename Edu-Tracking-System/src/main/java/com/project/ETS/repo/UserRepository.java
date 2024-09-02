@@ -11,7 +11,7 @@ import com.project.ETS.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, String> {
+
 	@Query("from User where role=:role")
 	List<User> findByRole(UserRole role);
-
 }

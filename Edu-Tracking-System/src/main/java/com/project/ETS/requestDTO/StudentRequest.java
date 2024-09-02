@@ -14,32 +14,32 @@ import lombok.Setter;
 @Getter
 @Setter
 public class StudentRequest extends UserRequest{
-	
+
 	@NotBlank(message = "Degree is required")
-	@Size(max = 100, message = "Degree must not exceed 100 character")
+	@Size(max = 100, message = "Degree name must not exceed 100 characters")
 	private String degree;
-	
+
 	@NotBlank(message = "Stream is required")
-	@Size(max = 100, message = "Stream must not exceed 100 character")
+	@Size(max = 100, message = "Stream name must not exceed 100 characters")
 	private String stream;
-	
-	@NotBlank(message = "year of passing is required")
-	@PastOrPresent(message = "Year of passing must be in the past or current year")
+
+	@NotNull(message = "Year of passing is required")
+	@PastOrPresent(message = "Year of passsing must be in the past or the current year")
 	private Year yop;
-	
-	@NotNull(message = "Degree percentage is required")
-	@DecimalMin(value = "0.0",inclusive = false, message = "Degree percentage must be greater than 0" )
-	@DecimalMax(value = "100.0", inclusive = true, message = "Degree percentage must be lesser that 100")
-	private double degreePercentage;
-	
-	@NotNull(message = "Twelveth percentage is required")
-	@DecimalMin(value = "0.0",inclusive = false, message = "Twelveth percentage must be greater than 0" )
-	@DecimalMax(value = "100.0", inclusive = true, message = "Twelveth percentage must be lesser that 100")
-	private double twelvethPercentage;
-	
+
+	@NotNull(message = "Degree Percentage is required")
+	@DecimalMin(value = "0.0", inclusive = false, message = "Degree percentage must be greater than 0")
+	@DecimalMax(value = "100.0", inclusive = true, message = "Degree percentage must be less than or equal to 100")
+	private int degreePercentage;
+
 	@NotNull(message = "Tenth percentage is required")
-	@DecimalMin(value = "0.0",inclusive = false, message = "Tenth percentage must be greater than 0" )
-	@DecimalMax(value = "100.0", inclusive = true, message = "Tenth percentage must be lesser that 100")
-	private double tenthPercentage;
+	@DecimalMin(value = "0.0", inclusive = false, message = "Tenth percentage must be greater the 0")
+	@DecimalMax(value = "100.0", inclusive = true, message = "Tenth percentage must be less than or equal to 100")
+	private int tenthPercentage;
+
+	@NotNull(message = "Twelth percentage is required.")
+	@DecimalMin(value = "0.0", inclusive = false, message = "Twelth percentage must be greater than 0.")
+	@DecimalMax(value = "100.0", inclusive = true, message = "Twefth percentage must be less than or equal to 100.")
+	private int twelvethPercentage;
 
 }

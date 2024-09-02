@@ -5,16 +5,15 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CustomeFieldError {
-	
+public class CustomFieldError {
+
 	private String fieldName;
 	private String errorMessage;
-	
-	public static CustomeFieldError create(String fieldName,String errorMessage) {
-		CustomeFieldError customFieldError=new CustomeFieldError();
+
+	public static CustomFieldError create(String fieldName,String errorMessage) {
+		CustomFieldError customFieldError = new CustomFieldError();
 		customFieldError.setFieldName(fieldName);
 		customFieldError.setErrorMessage(errorMessage);
 		return customFieldError;
 	}
-
 }

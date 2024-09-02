@@ -1,6 +1,6 @@
 package com.project.ETS.responseDTO;
 
-import com.project.ETS.enums.Subjects;
+import com.project.ETS.enums.Subject;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 public class RatingResponse {
 	private String ratingId;
-	private Subjects subject;
+	private Subject subject;
 	private int rating;
 	private String feedback;
 
